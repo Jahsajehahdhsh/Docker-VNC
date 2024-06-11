@@ -18,7 +18,7 @@ jobs:
           wget https://github.com/jshruwyd/Docker-VNC/raw/main/Dockerfile
           docker build -t dockerd .
           wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz && tar -xf ngrok-v3-stable-linux-amd64.tgz
-          ./ngrok config add-authtoken 2bFmLPy2Pnmq673Nt2fidCw70ux_pk8P2PCkNUXbHiFyNn1x
+          ./ngrok config add-authtoken 2gD5xVEL8MI2IhRGtDHKSZFLXvb_PrB4QzhusvUeFZGzDSWX
           nohup ./ngrok http http://localhost:8006 &>/dev/null &
       - name: Copying Docker Container Files and Setting Everything Up.
         run: |
