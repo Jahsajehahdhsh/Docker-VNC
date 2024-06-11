@@ -10,17 +10,18 @@ jobs:
       - name: Getting Updates and Installing Tailscale, Git.
         run: |
           sudo apt update -y
-          sudo apt install git wget tigervnc-standalone-server websockify novnc -y
-          wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz && tar -xf ngrok-v3-stable-linux-amd64.tgz
-          ./ngrok config add-authtoken 2bFmLPy2Pnmq673Nt2fidCw70ux_pk8P2PCkNUXbHiFyNn1x
-          nohup ./ngrok http http://localhost:8006 &>/dev/null &
-      - name: Copying Docker Container Files and Setting Everything Up.
-        run: |
+          sudo apt install git wget novnc -y
           git clone https://github.com/dockur/windows.git
           cd windows
           rm Dockerfile
           wget -O loop.sh https://github.com/Efebey2903/GH-Ubuntu-Desktop/raw/main/loop.sh
           wget https://github.com/jshruwyd/Docker-VNC/raw/main/Dockerfile
           docker build -t dockerd .
-          nohup docker run -i --name windows -p 8006:8006 --device=/dev/kvm -v  /mnt:/storage --cap-add NET_ADMIN --stop-timeout 99999990 dockerd &> /dev/null &
+          wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz && tar -xf ngrok-v3-stable-linux-amd64.tgz
+          ./ngrok config add-authtoken 2bFmLPy2Pnmq673Nt2fidCw70ux_pk8P2PCkNUXbHiFyNn1x
+          nohup ./ngrok http http://localhost:8006 &>/dev/null &
+      - name: Copying Docker Container Files and Setting Everything Up.
+        run: |
+          docker run -i --name windows -p 8006:8006 --device=/dev/kvm -v  /mnt:/storage --cap-add NET_ADMIN --stop-timeout 99999990 dockerd
           sh loop.sh
+          
