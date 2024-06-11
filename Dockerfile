@@ -36,6 +36,6 @@ VOLUME /storage
 ENV RAM_SIZE "10G"
 ENV CPU_CORES "2"
 ENV DISK_SIZE "80G"
-ENV VERSION "https://go.microsoft.com/fwlink/p/?LinkID=2195404&clcid=0x409&culture=en-us&country=US"
+ENV VERSION "https://dl.bobpony.com/windows/10/en-us_windows_10_enterprise_ltsc_2021_x64_dvd_d289cf96.iso"
 
 ENTRYPOINT ["/usr/bin/tini", "-s", "/run/entry.sh"]
